@@ -9,7 +9,7 @@ import { UserViewComponent } from './user-view/user-view.component';
 import { UserCreateComponent } from './user-create/user-create.component';
 import { UserEditComponent } from './user-edit/user-edit.component';
 import { ArticlesComponent } from './articles/articles.component';
-import { ArticlesViewComponent } from './articles-view/articles-view.component';
+import { ArticleViewComponent } from './articles-view/articles-view.component';
 import { ArticlesCreateComponent } from './articles-create/articles-create.component';
 import { ArticlesEditComponent } from './articles-edit/articles-edit.component';
 
@@ -21,7 +21,7 @@ import { ArticlesEditComponent } from './articles-edit/articles-edit.component';
     UserCreateComponent,
     UserEditComponent,
     ArticlesComponent,
-    ArticlesViewComponent,
+    ArticleViewComponent,
     ArticlesCreateComponent,
     ArticlesEditComponent
   ],

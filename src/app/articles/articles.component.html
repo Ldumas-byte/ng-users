@@ -1,1 +1,6 @@
-<p>articles works!</p>
+<h1>Articles</h1>
+<ul *ngIf="article">
+  <li *ngFor="let article of articles">
+    <a [routerLink]="['/article/view/', article._id]">{{article.articlename}}</a>
+  </li>
+</ul>

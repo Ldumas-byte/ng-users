@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
-// 1. Import the UserService
+
 import { UsersService } from '../users.service';
 
-// 2. Import the User Object/Schema
 import { User } from '../user';
 
 @Component({

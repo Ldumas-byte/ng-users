@@ -1,15 +1,40 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+
+import { ArticlesService } from '../articles.service';
+import { Article } from '../article';
 
 @Component({
-  selector: 'app-articles-view',
-  templateUrl: './articles-view.component.html',
-  styleUrls: ['./articles-view.component.scss']
+  selector: 'app-article-view',
+  templateUrl: './article-view.component.html',
+  styleUrls: ['./article-view.component.scss']
 })
-export class ArticlesViewComponent implements OnInit {
+export class ArticleViewComponent implements OnInit {
 
-  constructor() { }
+  article: Article;
 
-  ngOnInit(): void {
+  constructor(
+    private articlesService: ArticlesService,
+    private router: Router,
+    private route: ActivatedRoute
+  ) { }
+
+  ngOnInit() {
+    const id = this.route.snapshot.paramMap.get('id');
+    this.getArticle(id);
   }
 
+  getArticle(id): void {
+    this.articlesService.getArticle(id).subscribe(
+      (response:any) => {
+        this.article = response.article
+      }
+    );
+  }deleteArticle(id: string): void {
+    if(confirm("Are you sure to delete " + this.article.articlename)) {
+      this.articlesService.deleteArticle(id).subscribe(
+        ()=>{this.router.navigate(['/articles'])}
+      );
+    }
+  }
 }

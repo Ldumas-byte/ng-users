@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { User } from './user';
+import { Article } from './article';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -10,10 +10,25 @@ const httpOptions = {
 @Injectable(
   {providedIn: 'root'
 })
-export class UsersService {
-  private url: string = 'http://localhost:3000/api/users';
+export class ArticlesService {
+  deleteArticle(id: string) {
+    throw new Error("Method not implemented.");
+  }
+  private url: string = 'http://localhost:3000/api/articles';
   constructor(private http: HttpClient) { }
-  getUsers(): Observable<User[]> {
-    return this.http.get<User[]>(this.url);
+  getArticle(): Observable<Article[]> {
+    return this.http.get<Article[]>(this.url);
+  }
+  getArticles(id: string): Observable<Article> {
+    return this.http.get<Article>(`${this.url}/${id}`);
+  }
+  createArticles (Article: Article): Observable<Article> {
+    return this.http.post<Article>(this.url, Article, httpOptions);
+  }
+  editArticles (Article: Article): Observable<Article> {
+    return this.http.put<Article>(this.url, Article, httpOptions);
+  }
+  deleteArticles (id: string): Observable<Article> {
+    return this.http.delete<Article>(`${this.url}/${id}`);
   }
 }

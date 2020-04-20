@@ -1,7 +1,7 @@
 import { NgModule }             from '@angular/core';
 import { ArticlesComponent }   from './articles/articles.component';
 import { ArticlesCreateComponent }   from './articles-create/articles-create.component';
-import { ArticlesViewComponent }   from './articles-view/articles-view.component';
+import { ArticleViewComponent }   from './articles-view/articles-view.component';
 import { ArticlesEditComponent }   from './articles-edit/articles-edit.component';
 import { UserCreateComponent }   from './user-create/user-create.component';
 import { UserViewComponent }   from './user-view/user-view.component';
@@ -20,7 +20,7 @@ const routes: Routes = [
   { path: 'users/edit/:id', component: UserEditComponent },
   { path: 'articles', component: ArticlesComponent },
   { path: 'articles/create', component: ArticlesCreateComponent },
-  { path: 'articles/view/:id', component: ArticlesViewComponent },
+  { path: 'articles/view/:id', component: ArticleViewComponent },
   { path: 'articles/edit/:id', component: ArticlesEditComponent }
 
 ];
