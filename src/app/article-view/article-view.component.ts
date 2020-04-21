@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 
 import { ArticlesService } from '../articles.service';
 import { Article } from '../article';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-article-view',
@@ -26,15 +27,18 @@ export class ArticleViewComponent implements OnInit {
 
   getArticle(id): void {
     this.articlesService.getArticle(id).subscribe(
-      (response:any) => {
+      (response: any) => {
         this.article = response.article
       }
     );
-  }deleteArticle(id: string): void {
-    if(confirm("Are you sure to delete " + this.article.articlename)) {
+  }
+
+  deleteArticle(id: string): void {
+    if (confirm("Are you sure to delete " + this.article.title)) {
       this.articlesService.deleteArticle(id).subscribe(
-        ()=>{this.router.navigate(['/articles'])}
+        () => { this.router.navigate(['/articles']) }
       );
     }
   }
+
 }

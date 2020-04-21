@@ -7,28 +7,31 @@ const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
 };
 
-@Injectable(
-  {providedIn: 'root'
+@Injectable({
+  providedIn: 'root'
 })
 export class ArticlesService {
-  deleteArticle(id: string) {
-    throw new Error("Method not implemented.");
-  }
   private url: string = 'http://localhost:3000/api/articles';
+
   constructor(private http: HttpClient) { }
-  getArticle(): Observable<Article[]> {
+
+  getArticles(): Observable<Article[]> {
     return this.http.get<Article[]>(this.url);
   }
-  getArticles(id: string): Observable<Article> {
+
+  getArticle(id: string): Observable<Article> {
     return this.http.get<Article>(`${this.url}/${id}`);
   }
-  createArticles (Article: Article): Observable<Article> {
-    return this.http.post<Article>(this.url, Article, httpOptions);
+  
+  createArticle (article: Article): Observable<Article> {
+    return this.http.post<Article>(this.url, article, httpOptions);
   }
-  editArticles (Article: Article): Observable<Article> {
-    return this.http.put<Article>(this.url, Article, httpOptions);
+
+  editArticle (article: Article): Observable<Article> {
+    return this.http.put<Article>(this.url, article, httpOptions);
   }
-  deleteArticles (id: string): Observable<Article> {
+  
+  deleteArticle(id: string): Observable<Article> {
     return this.http.delete<Article>(`${this.url}/${id}`);
   }
 }
